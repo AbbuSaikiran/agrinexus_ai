@@ -47,11 +47,19 @@ class _OrdersScreenState extends State<OrdersScreen> {
   Widget _empty() => Center(
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: const [
-        Text('📦', style: TextStyle(fontSize: 48)),
-        SizedBox(height: 12),
-        Text('No orders yet', style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16)),
-        Text('Your orders will appear here', style: TextStyle(color: AppTheme.textGrey)),
+      children: [
+        Container(
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: Colors.grey.shade100,
+            shape: BoxShape.circle,
+          ),
+          child: const Icon(Icons.receipt_long_rounded, size: 48, color: AppTheme.textGrey),
+        ),
+        const SizedBox(height: 14),
+        const Text('No Active Orders', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16)),
+        const SizedBox(height: 4),
+        const Text('Your mandi trades and lot dispatches will appear here', style: TextStyle(color: AppTheme.textGrey, fontSize: 12)),
       ],
     ),
   );

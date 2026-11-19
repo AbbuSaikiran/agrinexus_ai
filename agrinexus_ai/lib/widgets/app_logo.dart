@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import '../core/theme/app_theme.dart';
 
-/// Professional vector-based logo for AgriNexus
-/// Replaces placeholder emojis with an authentic AgriTech emblem.
+/// App logo displaying the official AgriNexus AI emblem
 class AppLogo extends StatelessWidget {
   final double size;
   final bool showBadge;
@@ -22,57 +20,46 @@ class AppLogo extends StatelessWidget {
       height: size,
       decoration: BoxDecoration(
         color: backgroundColor ?? Colors.white,
-        borderRadius: BorderRadius.circular(size * 0.26),
+        borderRadius: BorderRadius.circular(size * 0.22),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.12),
-            blurRadius: size * 0.25,
-            offset: Offset(0, size * 0.1),
+            color: const Color(0xFF0F172A).withValues(alpha: 0.12),
+            blurRadius: size * 0.2,
+            offset: Offset(0, size * 0.08),
           ),
         ],
       ),
       child: Stack(
         alignment: Alignment.center,
         children: [
-          // Background organic leaf gradient ring
-          Container(
-            margin: EdgeInsets.all(size * 0.12),
-            decoration: BoxDecoration(
-              gradient: const LinearGradient(
-                colors: [Color(0xFF2E7D32), Color(0xFF1B5E20)],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
-              borderRadius: BorderRadius.circular(size * 0.2),
-            ),
-          ),
-          // Clean custom icon: Interconnected sprout / leaf network
-          Icon(
-            Icons.spa_rounded,
-            size: size * 0.52,
-            color: const Color(0xFFC8E6C9),
-          ),
-          Positioned(
-            bottom: size * 0.24,
-            child: Container(
-              width: size * 0.28,
-              height: 2.5,
-              decoration: BoxDecoration(
-                color: const Color(0xFFFDD835),
-                borderRadius: BorderRadius.circular(2),
+          Padding(
+            padding: EdgeInsets.all(size * 0.06),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(size * 0.18),
+              child: Image.asset(
+                'assets/images/logo.png',
+                width: size * 0.88,
+                height: size * 0.88,
+                fit: BoxFit.contain,
+                errorBuilder: (context, error, stackTrace) {
+                  return Icon(
+                    Icons.agriculture_rounded,
+                    size: size * 0.5,
+                    color: const Color(0xFF1B5E20),
+                  );
+                },
               ),
             ),
           ),
-          // Live pulse dot indicator when showBadge is enabled
           if (showBadge)
             Positioned(
-              right: size * 0.08,
-              top: size * 0.08,
+              right: size * 0.04,
+              top: size * 0.04,
               child: Container(
-                width: size * 0.18,
-                height: size * 0.18,
+                width: size * 0.2,
+                height: size * 0.2,
                 decoration: BoxDecoration(
-                  color: const Color(0xFF00E676),
+                  color: const Color(0xFF16A34A),
                   shape: BoxShape.circle,
                   border: Border.all(color: Colors.white, width: 2),
                 ),

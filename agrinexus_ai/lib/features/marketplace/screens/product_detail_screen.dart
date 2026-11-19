@@ -30,12 +30,16 @@ class ProductDetailScreen extends StatelessWidget {
             pinned: true,
             backgroundColor: AppTheme.primaryGreen,
             flexibleSpace: FlexibleSpaceBar(
-              background: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(colors: [AppTheme.primaryGreen.withOpacity(0.3), AppTheme.primaryGreen.withOpacity(0.6)]),
-                ),
-                child: const Center(child: Text('🌱', style: TextStyle(fontSize: 80))),
-              ),
+              background: product.imageUrl != null
+                  ? (product.imageUrl!.startsWith('http')
+                      ? Image.network(product.imageUrl!, fit: BoxFit.cover)
+                      : Image.asset(product.imageUrl!, fit: BoxFit.cover))
+                  : Container(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(colors: [AppTheme.primaryGreen.withOpacity(0.3), AppTheme.primaryGreen.withOpacity(0.6)]),
+                      ),
+                      child: const Center(child: Icon(Icons.agriculture_rounded, size: 70, color: Colors.white)),
+                    ),
             ),
           ),
           SliverPadding(

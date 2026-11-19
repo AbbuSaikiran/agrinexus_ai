@@ -119,28 +119,33 @@ class _ScanScreenState extends State<ScanScreen> with SingleTickerProviderStateM
                           style: const TextStyle(fontWeight: FontWeight.w600, color: AppTheme.textDark),
                         ),
                         const SizedBox(height: 4),
-                        const Text('AI will analyze it instantly', style: TextStyle(color: AppTheme.textGrey, fontSize: 13)),
+                        const Text('Instant Optical Diagnosis & Quality Test', style: TextStyle(color: AppTheme.textGrey, fontSize: 13, fontWeight: FontWeight.w500)),
                       ],
                     ),
             ),
-            const SizedBox(height: 16),
-            // Camera / Gallery buttons
+            const SizedBox(height: 14),
+            // Action buttons
             Row(
               children: [
                 Expanded(
                   child: ElevatedButton.icon(
-                    onPressed: _isLoading ? null : () => _pickImage(ImageSource.camera),
-                    icon: const Icon(Icons.camera_alt),
-                    label: const Text('Camera'),
+                    onPressed: _isLoading ? null : () => _analyze(),
+                    style: ElevatedButton.styleFrom(backgroundColor: AppTheme.brandGreen),
+                    icon: const Icon(Icons.flash_on_rounded, size: 18),
+                    label: const Text('Test Sample Scan'),
                   ),
                 ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: OutlinedButton.icon(
-                    onPressed: _isLoading ? null : () => _pickImage(ImageSource.gallery),
-                    icon: const Icon(Icons.photo_library),
-                    label: const Text('Gallery'),
-                  ),
+                const SizedBox(width: 10),
+                IconButton.filledTonal(
+                  onPressed: _isLoading ? null : () => _pickImage(ImageSource.gallery),
+                  icon: const Icon(Icons.photo_library_outlined, size: 20),
+                  tooltip: 'Upload photo from gallery',
+                ),
+                const SizedBox(width: 6),
+                IconButton.filledTonal(
+                  onPressed: _isLoading ? null : () => _pickImage(ImageSource.camera),
+                  icon: const Icon(Icons.camera_alt_outlined, size: 20),
+                  tooltip: 'Capture with camera',
                 ),
               ],
             ),

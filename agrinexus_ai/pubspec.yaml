@@ -22,11 +22,11 @@ dependencies:
   # HTTP & Networking
   http: ^1.2.0
 
-  # Local Storage
-  shared_preferences: ^2.3.0
-
-  # Image Handling
+  # Local Storage & Device
+  shared_preferences: ^2.2.3
   image_picker: ^1.1.0
+
+  # Image handling
   cached_network_image: ^3.4.0
 
   # UI Extras
@@ -47,3 +47,19 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/images/crops/
+    - assets/fonts/
+
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Regular.ttf
+        - asset: assets/fonts/Poppins-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Poppins-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Poppins-Bold.ttf
+          weight: 700

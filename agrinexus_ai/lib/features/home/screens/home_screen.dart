@@ -525,14 +525,15 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<Widget> _buildMarketHighlights() {
     final items = [
-      {'crop': 'Desi Tomatoes (Grade A)', 'price': '₹28/kg', 'trend': '+3.8%', 'isUp': true, 'mandi': 'Warangal APMC'},
-      {'crop': 'Nashik Red Onions', 'price': '₹34/kg', 'trend': '-1.2%', 'isUp': false, 'mandi': 'Hyderabad APMC'},
-      {'crop': 'Telangana Sona Rice', 'price': '₹68/kg', 'trend': '+2.1%', 'isUp': true, 'mandi': 'Karimnagar APMC'},
-      {'crop': 'Guntur Teja Red Chilli', 'price': '₹185/kg', 'trend': '+5.0%', 'isUp': true, 'mandi': 'Guntur APMC'},
+      {'crop': 'Desi Tomatoes (Grade A)', 'price': '₹28/kg', 'trend': '+3.8%', 'isUp': true, 'mandi': 'Warangal APMC', 'image': 'assets/images/crops/tomatoes.jpg'},
+      {'crop': 'Nashik Red Onions', 'price': '₹34/kg', 'trend': '-1.2%', 'isUp': false, 'mandi': 'Hyderabad APMC', 'image': 'assets/images/crops/onions.jpg'},
+      {'crop': 'Telangana Sona Rice', 'price': '₹68/kg', 'trend': '+2.1%', 'isUp': true, 'mandi': 'Karimnagar APMC', 'image': 'assets/images/crops/rice.jpg'},
+      {'crop': 'Guntur Teja Red Chilli', 'price': '₹185/kg', 'trend': '+5.0%', 'isUp': true, 'mandi': 'Guntur APMC', 'image': 'assets/images/crops/chilies.jpg'},
     ];
 
     return items.map((item) {
       final isUp = item['isUp'] as bool;
+      final img = item['image'] as String;
       return Container(
         margin: const EdgeInsets.only(bottom: 10),
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
@@ -550,14 +551,20 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         child: Row(
           children: [
-            Container(
-              width: 38,
-              height: 38,
-              decoration: BoxDecoration(
-                color: AppTheme.primaryGreen.withOpacity(0.1),
-                borderRadius: BorderRadius.circular(10),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Image.asset(
+                img,
+                width: 44,
+                height: 44,
+                fit: BoxFit.cover,
+                errorBuilder: (_, __, ___) => Container(
+                  width: 44,
+                  height: 44,
+                  color: AppTheme.primaryGreen.withOpacity(0.1),
+                  child: const Icon(Icons.agriculture_rounded, color: AppTheme.primaryGreen, size: 22),
+                ),
               ),
-              child: const Icon(Icons.agriculture_rounded, color: AppTheme.primaryGreen, size: 20),
             ),
             const SizedBox(width: 12),
             Expanded(
