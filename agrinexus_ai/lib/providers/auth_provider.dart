@@ -117,6 +117,11 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void setCurrentUserForTesting(UserModel user) {
+    _currentUser = user;
+    notifyListeners();
+  }
+
   void updateLanguage(String lang) async {
     if (_currentUser == null) return;
     _currentUser = UserModel(

@@ -286,24 +286,27 @@ class _LoginScreenState extends State<LoginScreen> {
             color: selected ? Colors.white : Colors.transparent,
             borderRadius: BorderRadius.circular(10),
           ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                icon,
-                size: 15,
-                color: selected ? AppTheme.primaryGreen : Colors.white70,
-              ),
-              const SizedBox(width: 5),
-              Text(
-                title,
-                style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  icon,
+                  size: 15,
                   color: selected ? AppTheme.primaryGreen : Colors.white70,
                 ),
-              ),
-            ],
+                const SizedBox(width: 4),
+                Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
+                    color: selected ? AppTheme.primaryGreen : Colors.white70,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
